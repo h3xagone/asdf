@@ -1,0 +1,52 @@
+To prevent standard users from creating subscriptions in Azure, you can use Azure Role-Based Access Control (RBAC) and Azure Policy.
+
+Here are the high-level steps:
+
+Use Azure RBAC to limit the permissions of standard users to only those that are necessary for their job function. For example, you can assign the "Reader" role to standard users, which allows them to view resources, but not create or modify them.
+
+Use Azure Policy to deny the creation of new subscriptions. You can use Azure Policy built-in definition for this or you can create your own.
+
+Assign the policy definition to the appropriate scope, such as a management group or a subscription.
+
+Verify that the policy is being enforced by checking the compliance status in the Azure portal or using Azure Policy APIs.
+
+By using Azure RBAC and Azure Policy together, you can prevent standard users from creating new subscriptions, while still allowing them to view and work with existing resources as needed. Also, it's important to note that the user that is going to assign the policy needs to have the right permissions to do so, such as owner or contributor on the management group or subscription.
+
+
+
+
+Preventing standard users from creating subscriptions in Azure is an important step in managing and controlling your Azure environment. Here is a documentation on how to achieve this:
+
+Step 1: Use Azure Role-Based Access Control (RBAC) to limit the permissions of standard users
+
+In the Azure portal, navigate to the Azure Active Directory blade.
+Select "Users" and then select the standard user that you want to modify.
+Select "Access control (IAM)" and then select "Add a role assignment".
+In the Add role assignment pane, select the "Reader" role.
+Click on "Save" button.
+Step 2: Use Azure Policy to deny the creation of new subscriptions
+
+In the Azure portal, navigate to the Azure Policy blade.
+Select "Definitions" and then select "+ Policy definition".
+In the create policy pane,
+Select the "Subscription" as the scope
+Select "Deny" as the effect
+Select "Microsoft.Subscription/subscriptions" as the resource type
+Select "Microsoft.Resources/subscriptions/write" as the action
+Give the policy a name and description
+Click on "Review + create" and then "Create" button.
+Step 3: Assign the policy definition to the appropriate scope
+
+In the Azure portal, navigate to the Azure Policy blade.
+Select "Assignments" and then select "+ Assign Policy"
+In the Assign Policy pane,
+Select "Subscription" as the scope
+Select the subscription where the policy will be applied
+Select the policy definition that you created in step 2
+Click on "Assign" button
+Step 4: Verify that the policy is being enforced
+
+In the Azure portal, navigate to the Azure Policy blade.
+Select "Compliance" and then select the subscription where the policy is assigned
+Verify that the policy is showing as "compliant"
+By using Azure RBAC and Azure Policy together, you can prevent standard users from creating new subscriptions, while still allowing them to view and work with existing resources as needed. This will help you to have better control and management of your Azure environment.
